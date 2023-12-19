@@ -7,24 +7,32 @@
         </a>
     </div>
     <div class="flow-root">
+        <?php if (isset($_SESSION["lista_cart"]) && count($_SESSION["lista_cart"]) != 0) { ?>
+
+
         <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
-            <?php for ($i = 0; $i < 2; $i++) { ?>
+            <?php foreach ($lista_cart as $key => $items) {
+                    $itemImg = $items[0];
+                    $itemTitle = $items[1];
+                    $itemPrecio = $items[2];
+                ?>
             <li class="py-3 sm:py-4">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <img class="w-8 h-8" src="/docs/images/people/profile-picture-1.jpg" alt="Neil image">
+                        <img class="w-8 h-8" src="<?php echo $itemImg ?>" alt="Neil image">
                     </div>
                     <div class="flex-1 min-w-0 ms-4">
                         <p class="mb-2 text-sm font-medium text-gray-900 truncate dark:text-white">
-                            Neil Sims
+                            <?php echo $itemTitle ?>
                         </p>
                         <?php include "button-counter.php" ?>
                     </div>
                     <div
                         class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white py-2 px-5">
-                        $320
+                        <?php echo $itemPrecio ?>
                     </div>
-                    <button class="border-x-gray-300 border-l-2 py-2 px-5">
+                    <button class="border-x-gray-300 border-l-2 py-2 px-5" role="btn-delete-item"
+                        data-delete="<?php echo $key ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
                             <path
                                 d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
@@ -35,5 +43,8 @@
             <?php } ?>
 
         </ul>
+        <?php  } else { ?>
+        <div class="flex justify-center items-center h-10 font-medium text-base">Empty cart</div>
+        <?php } ?>
     </div>
 </div>
