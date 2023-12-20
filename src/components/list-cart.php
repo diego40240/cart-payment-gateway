@@ -10,7 +10,7 @@
         <?php if (isset($_SESSION["lista_cart"]) && count($_SESSION["lista_cart"]) != 0) { ?>
 
 
-        <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+        <ul role="list" data-empty-cart="false" class="divide-y divide-gray-200 dark:divide-gray-700">
             <?php foreach ($lista_cart as $key => $items) {
                     $itemImg = $items[0];
                     $itemTitle = $items[1];
@@ -44,7 +44,11 @@
 
         </ul>
         <?php  } else { ?>
-        <div class="flex justify-center items-center h-10 font-medium text-base">Empty cart</div>
+        <ul role="list" data-empty-cart="true" class="divide-y divide-gray-200 dark:divide-gray-700">
+            <li class="py-3 sm:py-4">
+                <div class="flex justify-center items-center text-base font-medium">Empty cart</div>
+            </li>
+        </ul>
         <?php } ?>
     </div>
 </div>

@@ -681,14 +681,6 @@ video {
   height: fit-content;
 }
 
-.h-16 {
-  height: 4rem;
-}
-
-.h-10 {
-  height: 2.5rem;
-}
-
 .w-3 {
   width: 0.75rem;
 }
