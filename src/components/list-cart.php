@@ -2,21 +2,21 @@
     class="absolute -z-10 top-0 right-0 w-full max-w-md p-4 bg-white border border-gray-200 rounded-b-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 -translate-y-full duration-300 ease-linear">
     <div class="flex items-center justify-between mb-4">
         <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Cart</h5>
-        <a href="#" class="text-sm font-medium text-red-600 hover:underline dark:text-red-500">
+        <button role="btn-empty-cart" class="text-sm font-medium text-red-600 hover:underline dark:text-red-500">
             Empty cart
-        </a>
+        </button>
     </div>
     <div class="flow-root">
         <?php if (isset($_SESSION["lista_cart"]) && count($_SESSION["lista_cart"]) != 0) { ?>
 
 
-        <ul role="list" data-empty-cart="false" class="divide-y divide-gray-200 dark:divide-gray-700">
+        <ul role="list" data-empty-cart="false" class="divide-y divide-gray-200 dark:divide-gray-700 overflow-hidden">
             <?php foreach ($lista_cart as $key => $items) {
                     $itemImg = $items[0];
                     $itemTitle = $items[1];
                     $itemPrecio = $items[2];
                 ?>
-            <li class="py-3 sm:py-4">
+            <li class="py-3 sm:py-4 duration-300">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
                         <img class="w-8 h-8" src="<?php echo $itemImg ?>" alt="Neil image">
@@ -44,8 +44,8 @@
 
         </ul>
         <?php  } else { ?>
-        <ul role="list" data-empty-cart="true" class="divide-y divide-gray-200 dark:divide-gray-700">
-            <li class="py-3 sm:py-4">
+        <ul role="list" data-empty-cart="true" class="divide-y divide-gray-200 dark:divide-gray-700 overflow-hidden">
+            <li class="py-3 sm:py-4 duration-300">
                 <div class="flex justify-center items-center text-base font-medium">Empty cart</div>
             </li>
         </ul>

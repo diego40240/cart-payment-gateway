@@ -38,9 +38,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 //Eliminar item carrito
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-    $data_delete = json_decode($_GET['data_delete'], true);
-    $lista_cart = $_SESSION["lista_cart"];
-    unset($lista_cart[$data_delete]);
-    $_SESSION["lista_cart"] = $lista_cart;
-    echo json_encode("Item eliminado");
+    if ($_GET['data_delete'] != "empty") {
+        $data_delete = json_decode($_GET['data_delete'], true);
+        $lista_cart = $_SESSION["lista_cart"];
+        unset($lista_cart[$data_delete]);
+        $_SESSION["lista_cart"] = $lista_cart;
+        echo json_encode($lista_cart);
+    } else {
+        session_destroy();
+        echo json_encode("empty");
+    }
 }
