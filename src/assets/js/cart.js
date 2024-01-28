@@ -118,7 +118,7 @@ window.preciosItems = function () {
       let totalCart = $("ul[role=list]").find("div[role=precio-item]");
       let precio_total = 0;
       let title_items = $("ul[role=list]").find("p[role=title-item]");
-      let count_items = document.querySelectorAll("input[data-input-counter]");
+      let count_items = document.querySelectorAll("input[data-counter]");
       let title_prod = "";
 
       for (const key in totalCart) {
